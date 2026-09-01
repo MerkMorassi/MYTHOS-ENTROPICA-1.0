@@ -87,14 +87,6 @@ Gemini access is isolated in `js/gemini-api.js`.
 * **Generation:** `gemini-3.7-flash`
 * **Embeddings:** `gemini-embedding-001`
 
-The application does not use obsolete model identifiers such as:
-
-* `text-embedding-004`
-* `gemini-flash-latest`
-* `gemini-2.5-flash`
-* `gemini-3.0-pro`
-* `gemini-1.5-pro`
-
 The Gemini API key is supplied at runtime and is not part of the source repository.
 
 ## RAG Behavior
