@@ -1,0 +1,427 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MYTHOS VAULT // NOESIS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        rel="stylesheet"
+        href="./css/mythos-vault.css"
+    >
+</head>
+
+<body>
+    <main class="vault-shell">
+
+        <header class="vault-header">
+            <div>
+                <div class="eyebrow">
+                    MYTHOS VAULT
+                </div>
+
+                <h1>
+                    NOESIS
+                </h1>
+
+                <p class="subtitle">
+                    Resonant Archive // Retrieval Interface
+                </p>
+            </div>
+
+            <div class="header-status">
+                <span class="status-dot"></span>
+                <span>ONLINE</span>
+            </div>
+        </header>
+
+
+        <section class="vault-section">
+            <button
+                type="button"
+                class="section-toggle"
+                data-panel="settingsPanel"
+                id="settingsButton"
+            >
+                <span>CONFIGURATION</span>
+                <span>+</span>
+            </button>
+
+            <div
+                id="settingsPanel"
+                class="panel hidden"
+            >
+                <div class="panel-title">
+                    GEMINI CONFIGURATION
+                </div>
+
+                <div class="form-grid">
+
+                    <label>
+                        <span class="input-label">
+                            API KEY
+                        </span>
+
+                        <input
+                            id="apiKeyInput"
+                            class="text-input"
+                            type="password"
+                            autocomplete="off"
+                            placeholder="Gemini API key"
+                        >
+                    </label>
+
+                    <label>
+                        <span class="input-label">
+                            MODEL
+                        </span>
+
+                        <div class="input-row">
+                            <select
+                                id="modelSelect"
+                                class="text-input"
+                            ></select>
+
+                            <button
+                                type="button"
+                                class="btn"
+                                data-refresh-models
+                            >
+                                REFRESH
+                            </button>
+                        </div>
+                    </label>
+
+                    <label class="full-width">
+                        <span class="input-label">
+                            SYSTEM INSTRUCTION
+                        </span>
+
+                        <textarea
+                            id="systemInstructionInput"
+                            class="text-input"
+                            rows="7"
+                            spellcheck="false"
+                        ></textarea>
+                    </label>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="vault-section">
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">
+                        ARCHIVE
+                    </div>
+
+                    <h2>
+                        INGEST
+                    </h2>
+                </div>
+            </div>
+
+            <div
+                id="fileDrop"
+                class="file-drop"
+            >
+                <input
+                    id="fileInput"
+                    type="file"
+                    multiple
+                    hidden
+                >
+
+                <label
+                    for="fileInput"
+                    class="file-drop-label"
+                >
+                    <span class="drop-title">
+                        SELECT ARCHIVE MATERIAL
+                    </span>
+
+                    <span class="drop-subtitle">
+                        Drop text files here or choose files
+                    </span>
+                </label>
+            </div>
+
+            <div
+                id="fileList"
+                class="file-list"
+            ></div>
+
+            <div class="button-row">
+                <button
+                    id="ingestButton"
+                    type="button"
+                    class="btn btn-primary"
+                >
+                    INGEST
+                </button>
+
+                <button
+                    id="cancelIngestButton"
+                    type="button"
+                    class="btn"
+                    disabled
+                >
+                    CANCEL
+                </button>
+            </div>
+
+            <div
+                id="progressContainer"
+                class="progress-container hidden"
+            >
+                <div class="progress-track">
+                    <div
+                        id="progressBar"
+                        class="progress-bar"
+                    ></div>
+                </div>
+
+                <div
+                    id="progressText"
+                    class="progress-text"
+                ></div>
+            </div>
+        </section>
+
+
+        <section class="vault-section">
+            <button
+                type="button"
+                class="section-toggle"
+                data-panel="archivePanel"
+                id="archiveButton"
+            >
+                <span>ARCHIVE MANAGEMENT</span>
+                <span>+</span>
+            </button>
+
+            <div
+                id="archivePanel"
+                class="panel hidden"
+            >
+                <div class="button-row">
+                    <button
+                        id="exportButton"
+                        type="button"
+                        class="btn"
+                    >
+                        EXPORT
+                    </button>
+
+                    <button
+                        id="restoreButton"
+                        type="button"
+                        class="btn"
+                    >
+                        RESTORE
+                    </button>
+
+                    <input
+                        id="restoreInput"
+                        type="file"
+                        accept=".json,application/json"
+                    >
+
+                    <button
+                        id="clearVectorsButton"
+                        type="button"
+                        class="btn btn-danger"
+                    >
+                        CLEAR VECTORS
+                    </button>
+                </div>
+
+                <div class="glossary-row">
+                    <input
+                        id="glossaryInput"
+                        type="file"
+                        accept=".json,application/json"
+                    >
+
+                    <button
+                        type="button"
+                        class="btn"
+                        data-import-glossary
+                    >
+                        IMPORT GLOSSARY
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="vault-section">
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">
+                        RESONANT ARCHIVE
+                    </div>
+
+                    <h2>
+                        SOURCES
+                    </h2>
+                </div>
+
+                <div
+                    id="databaseStatus"
+                    class="status"
+                >
+                    IndexedDB: initializing…
+                </div>
+            </div>
+
+            <div
+                id="sourceList"
+                class="source-list"
+            ></div>
+
+            <div class="stats-grid">
+
+                <div class="stat-block">
+                    <div class="stat-label">
+                        VECTORS
+                    </div>
+
+                    <div
+                        id="vectorCount"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+                </div>
+
+                <div class="stat-block">
+                    <div class="stat-label">
+                        DOCUMENTS
+                    </div>
+
+                    <div
+                        id="documentCount"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+                </div>
+
+                <div class="stat-block">
+                    <div class="stat-label">
+                        LOGS
+                    </div>
+
+                    <div
+                        id="logCount"
+                        class="stat-value"
+                    >
+                        0
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="vault-section chat-section">
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">
+                        NOESIS
+                    </div>
+
+                    <h2>
+                        QUERY
+                    </h2>
+                </div>
+
+                <div
+                    id="statusMessage"
+                    class="status"
+                >
+                    Ready.
+                </div>
+            </div>
+
+            <div
+                id="chatHistory"
+                class="chat-history"
+                aria-live="polite"
+            ></div>
+
+            <div class="chat-input-row">
+                <textarea
+                    id="chatInput"
+                    class="text-input"
+                    rows="3"
+                    placeholder="Query the archive…"
+                ></textarea>
+
+                <button
+                    id="sendButton"
+                    type="button"
+                    class="btn btn-primary"
+                >
+                    SEND
+                </button>
+            </div>
+        </section>
+
+
+        <section class="vault-section">
+            <button
+                type="button"
+                class="section-toggle"
+                data-panel="analyticsPanel"
+                id="analyticsButton"
+            >
+                <span>ANALYTICS</span>
+                <span>+</span>
+            </button>
+
+            <div
+                id="analyticsPanel"
+                class="panel hidden"
+            >
+                <div class="panel-title">
+                    ARCHIVE TELEMETRY
+                </div>
+
+                <p class="muted">
+                    Vector, document, and query telemetry
+                    is maintained by the local archive.
+                </p>
+            </div>
+        </section>
+
+
+        <footer class="vault-footer">
+            <span>
+                MYTHOS VAULT // NOESIS
+            </span>
+
+            <span>
+                ENTROPICA
+            </span>
+        </footer>
+
+    </main>
+
+    <script
+        type="module"
+        src="./js/entropica.js"
+    ></script>
+</body>
+</html>
+```
