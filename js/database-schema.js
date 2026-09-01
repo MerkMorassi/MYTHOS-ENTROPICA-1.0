@@ -1,4 +1,3 @@
-```js
 /*
  * DATABASE SCHEMA
  *
@@ -119,4 +118,3 @@ export function getSchemaVersion(record) {
 export function isLegacyRecord(record) {
     return getSchemaVersion(record) < SCHEMA_VERSION;
 }
-```

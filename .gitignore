@@ -1,0 +1,8 @@
+﻿# Secret keys and API keys
+*API*.txt
+*.key
+.env
+
+# System files
+Thumbs.db
+.DS_Store

@@ -1,4 +1,3 @@
-```js
 /*
  * ENTROPICA
  *
@@ -2071,4 +2070,3 @@ if (
 } else {
     initialize();
 }
-```

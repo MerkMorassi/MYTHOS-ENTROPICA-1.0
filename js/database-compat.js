@@ -1,4 +1,3 @@
-```js
 /*
  * DATABASE COMPATIBILITY
  *
@@ -107,4 +106,3 @@ export function toCurrentLogs(
         toCurrentLog
     );
 }
-```
